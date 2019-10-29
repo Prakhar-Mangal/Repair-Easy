@@ -1,0 +1,47 @@
+.login{
+    background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("../img/bucket-bulldozer-clouds.jpg");  background-repeat:no-repeat;
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center;
+    height: 100vh;
+    width: 100vw;
+    font-size: calc(.4  em + 1vh)     
+
+}
+.card-login{
+    width:30% !important;
+   min-width: 220px;
+    text-align: center;
+    margin-left: 30%;
+    font-size: calc(.4em + 1vh)   ;  
+    
+
+    background-color: rgba(245, 245, 245, 0.4);
+}
+
+.ed-table{
+    width: 100% !important;
+    text-align: center; 
+  }
+  .ed-table th{
+   
+    color: #2980B9 !important;
+    font-size: calc(0.5em + 0.5vw) !important;
+
+  }
+  .ed-table tbody{
+    width: 100% ;
+    font-size: calc(0.5em + 0vw) !important;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  }
+  
+  body{
+    background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("../img/action-blue-sky-bucket-1116035.jpg");  background-repeat:no-repeat;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-attachment: fixed;
+    background-size:cover;
+
+    width: 100%;
+
+  }
