@@ -7,7 +7,7 @@
 <head>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-146505091-1">$
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-146505091-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -180,7 +180,7 @@
                 <div class="container">
 
                   <div id="logo" class="pull-left">
-                    <h1><a href="#body" class="scrollto">Grab<span>IT</span></a></h1>
+                    <h1><a href="#body" class="scrollto">Repair<span>IT</span></a></h1>
                     <!-- Uncomment below if you prefer to use an image logo -->
                     <!-- <a href="#body"><img src="img/logo.png" alt="" title="" /></a>-->
                   </div>
@@ -188,7 +188,8 @@
                   <nav id="nav-menu-container">
                     <ul class="nav-menu">
                       <li class="menu-active"><a href="/">Home</a></li>
-                      <li class="menu"><a onclick="send('IWSELL')" href="/seller/">Sell</a></li>
+                      <li class="menu-active"><a href="/">Dashboard</a></li>
+                      <li class="menu"><a href="/logout/">Logout</a></li>
                     </ul>
                   </nav><!-- #nav-menu-container -->
                 </div>
@@ -201,12 +202,12 @@
         
         <div class="mx-auto mt-0 col-md-4" style="height: 300px;">
                 <div class="fancy-cards">
-    
+                    
                     <div class="fancy-card">
-                        <div class="top" style=" background-image: url('');">
+                        <div class="top" style=" background-image: url('/media/{{shop.image}}');">
                             <div class="caption">
                                 <h3 class="title">{{shop.name}}</h3>
-                                <a href="{% url 'pshop' shop.id %}" onclick="" class="button">Grab_IT</a>
+                                <a href="{% url 'pshop' shop.id %}" onclick="" class="button">Repair_IT</a>
                             </div>
                         </div>
                         <div class="middle"></div>

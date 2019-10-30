@@ -9,6 +9,7 @@ import collections
 class Shop(models.Model):
     name = models.CharField(max_length=20,default='')
     contact = models.IntegerField(default=0)
+    image = models.FileField(upload_to='shop/images',default='')
     
 
     def __str__(self):
@@ -17,27 +18,19 @@ class Shop(models.Model):
 class Item(models.Model):
     shop = models.ForeignKey(Shop,on_delete=models.CASCADE)
     name = models.CharField(max_length=20,default='')
+    image = models.FileField(upload_to='item/images',default='')
 
     def __str__(self):
         return self.name
 
-class Request(models.Model):
-    
-    # user = models.ForeignKey(User,on_delete=models.CASCADE)
+class Request(models.Model):   
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
     item = models.ForeignKey(Item,on_delete=models.CASCADE)
     address = models.CharField(max_length=2000,default='')
     date = models.DateField()
     time = models.TimeField()
     timestamp = models.DateTimeField(auto_now=True)
 
-class Order(models.Model):
-    
-    # user = models.ForeignKey(User,on_delete=models.CASCADE)
-    item = models.ForeignKey(Item,on_delete=models.CASCADE)
-    address = models.CharField(max_length=2000,default='')
-    date = models.DateField()
-    time = models.TimeField()
-    timestamp = models.DateTimeField(auto_now=True)
     
     
     

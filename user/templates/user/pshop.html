@@ -180,7 +180,7 @@
                 <div class="container">
 
                   <div id="logo" class="pull-left">
-                    <h1><a href="#body" class="scrollto">Grab<span>IT</span></a></h1>
+                    <h1><a href="#body" class="scrollto">Repair<span>IT</span></a></h1>
                     <!-- Uncomment below if you prefer to use an image logo -->
                     <!-- <a href="#body"><img src="img/logo.png" alt="" title="" /></a>-->
                   </div>
@@ -188,7 +188,7 @@
                   <nav id="nav-menu-container">
                     <ul class="nav-menu">
                       <li class="menu-active"><a href="/">Home</a></li>
-                      <li class="menu"><a onclick="send('IWSELL')" href="/seller/">Sell</a></li>
+                      <li class="menu"><a href="/logout/">Logout</a></li>
                     </ul>
                   </nav><!-- #nav-menu-container -->
                 </div>
@@ -233,6 +233,8 @@
                                                        
                                                         <form action="/shop/order/" method="POST">
                                                             {% csrf_token %}
+                                                            <input type="hidden" name="user" value="{{user.id}}">
+
                                                             <input type="hidden" name="item" value="{{item.id}}">
                                                             
                                                             <div class="form-group">
