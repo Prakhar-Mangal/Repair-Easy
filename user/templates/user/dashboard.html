@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-146505091-1">$
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-146505091-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -117,7 +117,7 @@
           <div class="container">
 
             <div id="logo" class="pull-left">
-              <h1><a href="#body" class="scrollto">Grab<span>IT</span></a></h1>
+              <h1><a href="#body" class="scrollto">Repair<span>EASY</span></a></h1>
 
               <!-- Uncomment below if you prefer to use an image logo -->
               <!-- <a href="#body"><img src="img/logo.png" alt="" title="" /></a>-->
@@ -128,41 +128,15 @@
             <nav id="nav-menu-container" >
               <ul class="nav-menu">
 
-                <li class="menu" ><a href="/">Home</a></li>
-                <li class="menu"><a href="/addProduct/">Add-Product</a></li>
-                <li class="menu-active"><a href="/seller/sellerhome">My-Cart</a></li>
-                <li><a href="/logout/">Logout</a></li>
+                <li class="menu"><a href="/shop/">Shops</a></li>
+                      <li class="menu-active"><a href="/dashboard/">Dashboard</a></li>
+                      <li class="menu"><a href="/logout/">Logout</a></li>
 
               </ul>
             </nav><!-- #nav-menu-container -->
           </div>
         </header>
-    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Grab_IT</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-              <li class="nav-item ">
-                  <a class="nav-link" style="color: chartreuse; font-family:cursive; " href="#"><b>Hey {{user.username}} </b><span class="sr-only">(current)</span></a>
-                </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="/addProduct/">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                    <a class="nav-link active" href="#">My-cart <span class="sr-only">(current)</span></a>
-                  </li>
-          </ul>
-          <ul class="navbar-nav ml-0">
-          <li class="nav-item active ">
-            <a class="nav-link" href="/logout/">Logout</a>
-          </li>
-          </ul>
-
-        </div>
-      </nav> -->
+   
 
       <div>
         <div class="row ml-0 mr-0" style="width:100%;">
@@ -171,32 +145,34 @@
               <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
                 <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">To-Be Approved</a>
                 <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Approved</a>
-                
+                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Disapproved</a>
               </div>
             </nav>
             <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
 
               <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                  <center><b>Have patience your product will be approved soon :)</b></center>
+                  <center><b>Have patience your request will be approved soon :)</b></center>
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 
                 </div>
                 <div class="row">
-                   {% for product in products %}
-                        {% if product.status == 0 or product.status == 3 or  product.status == 4  %}
+                   {% for urequest in urequests %}
+                        {% if urequest.status == 0 %}
 
                         <div class="mx-auto mt-2">
                             <div class="card" style="width: 15rem;">
-                                <img src="/media/{{product.image}}" alt="loading..." class="card-img-top" style="height: 13rem;">
+                                <img src="/media/{{urequest.item.image}}" alt="loading..." class="card-img-top" style="height: 13rem;">
 
                                   <ul class="list-group list-group-flush">
-                                      <li class="list-group-item" style="text-align: center; background-color: rgb(236, 204, 19);"><h5><b>{{product.name}}</b></h5></li>
-                                      <li class="list-group-item">Price: {{product.price}}</li>
-                                      <li class="list-group-item">Category: {{product.category.name}}</li>
-                                      <li class="list-group-item">Subcategory: {{product.subcategory.name}}</li>
+                                      <li class="list-group-item" style="text-align: center; background-color: rgb(236, 204, 19);"><h5><b>{{urequest.item.name}}</b></h5></li>
+                                      <li class="list-group-item">{{urequest.item.shop.name}}</li>
+                                      <li class="list-group-item">Contact: {{urequest.item.shop.contact}}</li>
+                                      <li class="list-group-item">Date: {{urequest.date}}</li>
+                                      <li class="list-group-item">Time: {{urequest.time}}</li>
+                                      
                                     </ul>
                                 </div>
                               </div>
@@ -207,57 +183,49 @@
               <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                   <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                       <div class="row">
-                        {% for product in products %}
-                             {% if product.status == 1  %}
+                        {% for urequest in urequests %}
+                        {% if urequest.status == 1 %}
 
-                             <div class="mx-auto mt-2">
-                                 <div class="card" style="width: 15rem; background-color:grey;">
-                                    <img src="/media/{{product.image}}" alt="loading..." class="card-img-top" style="height: 13rem;">
+                        <div class="mx-auto mt-2">
+                            <div class="card" style="width: 15rem;">
+                                <img src="/media/{{urequest.item.image}}" alt="loading..." class="card-img-top" style="height: 13rem;">
 
-                                       <ul class="list-group list-group-flush">
-                                           <li class="list-group-item" style="text-align: center; background-color: rgb(236, 204, 19);"><h5><b>{{product.name}}</b></h5></li>
-                                           <li class="list-group-item">Price: {{product.price}}</li>
-                                           <li class="list-group-item">Category: {{product.category.name}}</li>
-                                           <li class="list-group-item">Subcategory: {{product.subcategory.name}}</li>
-                                           <li class="list-group-item"><button onclick="getViews('{{product.id}}')" type="button" class="btn btn-success" style="width:100%"
-                                            data-toggle="modal" data-target="#pro{{product.id}}">
-                                            Views
+                                  <ul class="list-group list-group-flush">
+                                      <li class="list-group-item" style="text-align: center; background-color: rgb(236, 204, 19);"><h5><b>{{urequest.item.name}}</b></h5></li>
+                                      <li class="list-group-item">{{urequest.item.shop.name}}</li>
+                                      <li class="list-group-item">Contact: {{urequest.item.shop.contact}}</li>
+                                      <li class="list-group-item">Date: {{urequest.date}}</li>
+                                      <li class="list-group-item">Time: {{urequest.time}}</li>
+                                    </ul>
+                                </div>
+                              </div>
+                              {% endif %}
+                            {% endfor %}
+                       </div>
+                       </div>              </div>
+                       <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                      <div class="row">
+                        {% for urequest in urequests %}
+                        {% if urequest.status == -1 %}
 
-                                        </button></li>
-                                           <a href="{% url 'sold' product.id %}" class="btn btn-primary">Sold</a>
-                                         </ul>
-                                     </div>
-                                   </div>
-                                   <!-- Modal -->
-                                   <div class="modal fade" id="pro{{product.id}}" tabindex="-1" role="dialog"
-                                   aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                   <div class="modal-dialog modal-dialog-centered" role="document">
-                                       <div class="modal-content">
-                                           <div class="modal-header">
-                                               <h5 class="modal-title" id="exampleModalCenterTitle"
-                                                   style="text-align:center; width:100%; font-family:cursive"><b>No. Of Views</b></h5>
-                                               <button type="button" class="close" data-dismiss="modal"
-                                                   aria-label="Close">
-                                                   <span aria-hidden="true">&times;</span>
-                                               </button>
-                                           </div>
+                        <div class="mx-auto mt-2">
+                            <div class="card" style="width: 15rem;">
+                                <img src="/media/{{urequest.item.image}}" alt="loading..." class="card-img-top" style="height: 13rem;">
 
-                                           <div class="modal-body">
-                                              <h4 style="text-align: center; color:red;"><div id="view{{product.id}}">Loading....</div></h4>
-
-
-                                           </div>
-                                           <div class="modal-footer">
-                                               <button type="button" class="btn btn-danger"
-                                                   data-dismiss="modal">Close</button>
-
-                                           </div>
-                                       </div>
-                                   </div>
-                               </div>
-                               <!-- vfd -->
-                                   {% endif %}
-                                 {% endfor %}
+                                  <ul class="list-group list-group-flush">
+                                      <li class="list-group-item" style="text-align: center; background-color: rgb(236, 204, 19);"><h5><b>{{urequest.item.name}}</b></h5></li>
+                                      <li class="list-group-item">{{urequest.item.shop.name}}</li>
+                                      <li class="list-group-item">Contact: {{urequest.item.shop.contact}}</li>
+                                      <li class="list-group-item">Date: {{urequest.date}}</li>
+                                      <li class="list-group-item">Time: {{urequest.time}}</li>
+                                      <li class="list-group-item" style="color: red;">Disapproved: {{urequest.disapprove}}</li>
+                                      
+                                    </ul>
+                                </div>
+                              </div>
+                              {% endif %}
+                            {% endfor %}
                        </div>
                        </div>              </div>
               

@@ -172,23 +172,42 @@
   <!-- Main Stylesheet File -->
   <link href="{% static 'dir/css/style.css' %}" rel="stylesheet">
 
-    <title>Buyer</title>
+    <title>Shop</title>
 </head>
+<style>
+  .username{
+    text-align: center;
+    color: #e74c3c;
+    font-family: cursive;
+    font-size: calc( 1em + 1vh );
+  }
+  #pro {
+    color: #0c2e8a;
+    line-height: 1;
+    display: inline-block;
+
+  }
+
+#pro span {
+color: #50d8af;
+}
+</style>
 
 <body>
         <header id="header">
                 <div class="container">
 
                   <div id="logo" class="pull-left">
-                    <h1><a href="#body" class="scrollto">Repair<span>IT</span></a></h1>
+                    <h1><a href="#body" class="scrollto">Repair<span>EASY</span></a></h1>
                     <!-- Uncomment below if you prefer to use an image logo -->
                     <!-- <a href="#body"><img src="img/logo.png" alt="" title="" /></a>-->
                   </div>
+                  <div class="username" id="pro">< {{user.first_name}} ></a></div>
 
                   <nav id="nav-menu-container">
                     <ul class="nav-menu">
-                      <li class="menu-active"><a href="/">Home</a></li>
-                      <li class="menu-active"><a href="/">Dashboard</a></li>
+                      <li class="menu-active"><a href="">Shops</a></li>
+                      <li class="menu"><a href="/dashboard/">Dashboard</a></li>
                       <li class="menu"><a href="/logout/">Logout</a></li>
                     </ul>
                   </nav><!-- #nav-menu-container -->
